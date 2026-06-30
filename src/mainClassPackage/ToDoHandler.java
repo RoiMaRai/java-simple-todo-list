@@ -1,10 +1,11 @@
 package mainClassPackage;
 
+import commands.Toggle;
+
 import java.util.ArrayList;
 
 public class ToDoHandler {
     private final ArrayList<ToDo> toDoContainer = new ArrayList<>();
-    Utility utility = new Utility();
 
     ////////// ADD ////////////
 
@@ -30,7 +31,7 @@ public class ToDoHandler {
     }
 
     public void removeItemFromDisplayNumber(int displayNumber) {
-        int index = utility.toIndex(displayNumber);
+        int index = Utility.toIndex(displayNumber);
         if (index >= 0 && index < toDoContainer.size()){
             toDoContainer.remove(index);
         }
@@ -45,17 +46,35 @@ public class ToDoHandler {
     }
 
     public void showToDoList(){
-        utility.printSeparator("/", Utility.STANDARD_SEPARATOR_WIDTH);
+        Utility.printSeparator("/", Utility.STANDARD_SEPARATOR_WIDTH);
+        System.out.println("<<TO-DO LIST>>");
+        Utility.printSeparator("-", Utility.STANDARD_SEPARATOR_WIDTH);
         for (int i=0; i < toDoContainer.size(); i++){
             ToDo todo = toDoContainer.get(i);
             if (i!=0){
-                utility.printSeparator("-", Utility.STANDARD_SEPARATOR_WIDTH);
+                Utility.printSeparator("-", Utility.STANDARD_SEPARATOR_WIDTH);
             }
-            System.out.println("#"+ utility.toDisplayNumber(i));
+            System.out.println("#"+ Utility.toDisplayNumber(i));
             printToDoInfo(todo);
         }
-        utility.printSeparator("/", Utility.STANDARD_SEPARATOR_WIDTH);
     }
 
+    //////////// CHANGE //////////////
+
+    public void toggleItemFromDisplayNumber(int displayNumber){
+        ToDo toDo = toDoContainer.get(Utility.toIndex(displayNumber));
+        toDo.toggleDone();
+    }
+
+    //////// SENDING DATA ////////
+
+    public String sendingToDoDataAsString(){
+        StringBuilder data = new StringBuilder();
+        for (ToDo toDo : toDoContainer){
+            data.append(toDo.getName());
+
+        }
+        return data.toString();
+    }
 
 }

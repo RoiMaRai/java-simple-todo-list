@@ -1,8 +1,6 @@
 package mainClassPackage;
 
-import commands.Command;
-
-import commands.AddItem;
+import commands.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +15,10 @@ public class UserCommand {
     /// Initializing command ///
 
     public UserCommand(){
-        AddItem addItem = new AddItem(toDoHandler,hashMap);
+        Add add = new Add(toDoHandler,hashMap);
+        Remove remove = new Remove(toDoHandler,hashMap);
+        Show show = new Show(toDoHandler,hashMap);
+        Toggle toggle = new Toggle(toDoHandler,hashMap);
     }
 
     ////////////////////////////
