@@ -23,7 +23,7 @@ public class ToDo {
         return description;
     }
 
-    public boolean getAlreadyDone(){
+    public boolean isAlreadyDone(){
         return alreadyDone;
     }
 
