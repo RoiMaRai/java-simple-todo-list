@@ -1,4 +1,4 @@
-package corePackage;
+package mainClassPackage;
 
 import commands.AddItem;
 import commands.Command;

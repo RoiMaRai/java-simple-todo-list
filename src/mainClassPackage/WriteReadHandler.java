@@ -1,4 +1,4 @@
-package corePackage;
+package mainClassPackage;
 
 public class WriteReadHandler {
 }
