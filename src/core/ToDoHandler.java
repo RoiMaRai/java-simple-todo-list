@@ -1,7 +1,12 @@
+package core;
+
 import java.util.ArrayList;
 
 public class ToDoHandler {
     private final ArrayList<ToDo> toDoContainer = new ArrayList<>();
+    Utility utility = new Utility();
+
+    ////////// ADD ////////////
 
     public void addItem(String itemName, String itemDescription, boolean alreadyDone){
         if (itemName!=null && itemDescription!=null){
@@ -14,9 +19,7 @@ public class ToDoHandler {
         addItem(itemName, itemDescription, false);
     }
 
-    private void printSeparator(String character, int amount){
-        System.out.println(character.repeat(amount));
-    }
+    //////////// REMOVE //////////////
 
     public void removeItemFromName(String itemName){
         toDoContainer.removeIf(todo -> todo.getName().equals(itemName));
@@ -26,21 +29,33 @@ public class ToDoHandler {
         toDoContainer.removeIf(toDo -> toDo.getUuid().equals(uuid));
     }
 
+    public void removeItemFromDisplayNumber(int displayNumber) {
+        int index = utility.toIndex(displayNumber);
+        if (index >= 0 && index < toDoContainer.size()){
+            toDoContainer.remove(index);
+        }
+    }
+
+    //////////// OUTPUT //////////////
+
     public void printToDoInfo(ToDo toDo){
-        System.out.println("Item Name: " + toDo.getName());
+        System.out.println("Name: " + toDo.getName());
         System.out.println("Description: " + toDo.getDescription());
         System.out.println("Status: " + (toDo.isAlreadyDone() ? "☒" : "☐"));
     }
 
     public void showToDoList(){
-        printSeparator("/",25);
+        utility.printSeparator("/", Utility.STANDARD_SEPARATOR_WIDTH);
         for (int i=0; i < toDoContainer.size(); i++){
             ToDo todo = toDoContainer.get(i);
             if (i!=0){
-                printSeparator("-",25);
+                utility.printSeparator("-", Utility.STANDARD_SEPARATOR_WIDTH);
             }
+            System.out.println("#"+ utility.toDisplayNumber(i));
             printToDoInfo(todo);
         }
-        printSeparator("/",25);
+        utility.printSeparator("/", Utility.STANDARD_SEPARATOR_WIDTH);
     }
+
+
 }

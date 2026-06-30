@@ -1,3 +1,5 @@
+package core;
+
 import java.util.UUID;
 
 public class ToDo {
@@ -51,4 +53,7 @@ public class ToDo {
         alreadyDone = newAlreadyDone;
     }
 
+    public void toggleDone(){
+        setAlreadyDone(!alreadyDone);
+    }
 }
