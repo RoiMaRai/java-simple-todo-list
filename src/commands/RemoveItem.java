@@ -2,17 +2,16 @@ package commands;
 
 import mainClassPackage.CommandHashmapHandler;
 import mainClassPackage.ToDoHandler;
-import mainClassPackage.UserCommand;
 
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class AddItem implements Command {
-    private String callName = "AddItem";
+public class RemoveItem implements Command {
+    private String callName = "RemoveItem";
     ToDoHandler toDoHandler = new ToDoHandler();
     CommandHashmapHandler commandHashmapHandler = new CommandHashmapHandler();
 
-    public AddItem(HashMap<String,Command> hashMap){
+    public RemoveItem(HashMap<String,Command> hashMap){
         commandHashmapHandler.addToHashmap(hashMap,getCallName(),this);
     }
     Scanner scanner = new Scanner(System.in);

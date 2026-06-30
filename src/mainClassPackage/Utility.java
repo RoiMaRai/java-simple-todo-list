@@ -1,5 +1,9 @@
 package mainClassPackage;
 
+import commands.Command;
+
+import java.util.HashMap;
+
 public class Utility {
     public static final int STANDARD_SEPARATOR_WIDTH = 25;
 
