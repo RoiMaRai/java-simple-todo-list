@@ -1,4 +1,4 @@
-package core;
+package corePackage;
 
 public class Utility {
     public static final int STANDARD_SEPARATOR_WIDTH = 25;

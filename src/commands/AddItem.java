@@ -1,7 +1,6 @@
 package commands;
 
-import core.ToDo;
-import core.ToDoHandler;
+import corePackage.ToDoHandler;
 
 public class AddItem implements Command {
     private String callName;
