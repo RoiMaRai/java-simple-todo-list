@@ -2,7 +2,6 @@ package mainClassPackage;
 
 import commands.Command;
 
-import commands.RemoveItem;
 import commands.AddItem;
 
 import java.util.HashMap;
@@ -10,6 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class UserCommand {
+    ToDoHandler toDoHandler = new ToDoHandler();
     private Scanner scanner = new Scanner(System.in);
     CommandHashmapHandler commandHashmapHandler = new CommandHashmapHandler();
     HashMap<String,Command> hashMap = new HashMap<>();
@@ -17,8 +17,7 @@ public class UserCommand {
     /// Initializing command ///
 
     public UserCommand(){
-        AddItem addItem = new AddItem(hashMap);
-        RemoveItem removeItem = new RemoveItem(hashMap);
+        AddItem addItem = new AddItem(toDoHandler,hashMap);
     }
 
     ////////////////////////////
@@ -43,7 +42,11 @@ public class UserCommand {
         while (true){
             showCommand();
             String command = scanner.nextLine();
-            System.out.println(command);
+            Command cmd = hashMap.get(command);
+
+            if (cmd!=null){
+                cmd.execute();
+            }
         }
     }
 
